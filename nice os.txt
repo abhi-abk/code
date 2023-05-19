@@ -1,0 +1,25 @@
+#include&lt;stdio.h&gt;
+#include&lt;sys/types.h&gt;
+#include&lt;unistd.h&gt;
+#include&lt;stdlib.h&gt;
+main()
+{
+int pid, retnice;
+printf(&quot;press DEL to stop process \n&quot;);
+pid=fork();
+for(;;)
+{
+if(pid == 0)
+{
+retnice = nice (−5);
+print(&quot;child gets higher CPU priority %d \n&quot;, retnice);
+sleep(10);
+}
+else
+{
+retnice=nice(4);
+print(&quot;Parent gets lower CPU priority %d \n&quot;, retnice);
+sleep(10);
+}
+}
+}
